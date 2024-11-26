@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API GET</title>
+</head>
+<body>
+    <button onclick="postData()">POST</button>
+     <button onclick="getData()">GET</button>    
+    <script>
+        
+        async function postData(){
+         let res= await fetch("http://localhost:3000/product",
+                {
+                    method:"POST",
+                    body:JSON.stringify(
+                        {
+                        "name":"slice",
+                        "price":22000,
+                    }),
+                    headers:{
+                        "Content-Type":"application/json"
+                    }
+                }
+            )
+          let data= await res.json();
+          console.log(data)
+        }
+
+
+        async function getData(){
+         let res= await fetch("http://localhost:3000/order")
+          let data=await res.json();
+          console.log(data)
+        }
+            </script>
+</body>
+</html>
